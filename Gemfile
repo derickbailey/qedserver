@@ -13,6 +13,7 @@ gem 'sinatra-respond_to', '0.7.0'
 gem 'maruku', '0.6.0'
 gem 'sass', '3.1.1'
 gem 'jruby-openssl', '0.7.3'
+gem 'jruby-rack', '1.0.9'
 
 
 group :development, :test do
