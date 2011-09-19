@@ -10,9 +10,11 @@ QED_ROOT_FOLDER = ENV_JAVA["jetty.home"] ? ENV_JAVA['user.dir'] + "/.." : ENV_JA
 
 DBFILE =  File.expand_path(".", QED_ROOT_FOLDER + "/products.sqlite3")
 PUBLIC_PATH = File.expand_path(".", QED_ROOT_FOLDER + "/public")
+TEMPLATES_PATH = File.expand_path(".", QED_ROOT_FOLDER + "/templates")
 
 # Public Folder setup
 FileUtils.mkdir_p PUBLIC_PATH
+FileUtils.mkdir_p TEMPLATES_PATH
 
 puts "Serving files from #{PUBLIC_PATH}"
 

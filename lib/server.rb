@@ -28,6 +28,14 @@ set :markdown, :layout_engine => :haml, :layout => :layout
 
 puts "Server started. Press CTRL+C to stop."
 
+helpers do
+  def find_template(views, name, engine)
+    my_view = "#{TEMPLATES_PATH}/#{name}.erb"
+    yield my_view
+    super(views, name, engine)
+  end
+end
+
 # The home page with information about the server itself
 # renders index.html.haml
 get "/" do
@@ -57,6 +65,10 @@ get "/env" do
   @qed_env = ENV.keys.collect{|a| a + " : " + ENV[a]}.compact
   @qed_java_env = ENV_JAVA.keys.collect{|a| a + " : " + ENV_JAVA[a]}.compact
   erb :env
+end
+
+get "/templates/:name" do
+  erb params["name"].to_sym
 end
 
 require 'lib/controllers/categories_products_controller'
